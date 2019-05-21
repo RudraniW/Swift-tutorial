@@ -133,7 +133,7 @@ while square < finalsqr {
     }
 }
 print("Game Over!!")
-/*repeat while
+//repeat while
 repeat {
     square += board[square]
     //roll the dice
@@ -144,7 +144,7 @@ repeat {
     square += diceroll
     
 }while square < finalsqr
-print("Game over!!")*/
+print("Game over!!")
 // conditional statements : if else
 var temperatureInFahrenheit = 40
 if temperatureInFahrenheit <= 32 {
