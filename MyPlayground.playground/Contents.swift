@@ -265,7 +265,7 @@ let integer  = 5
 var description = "The no \(integer) is "
 switch integer {
 case 1,3,5,7,9:
-    description += "odd no and "
+    description += "Odd no and "
     fallthrough
 default:
     description += "Integer"
