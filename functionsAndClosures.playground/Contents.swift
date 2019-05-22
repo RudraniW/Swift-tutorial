@@ -126,12 +126,12 @@ func chooseStepFunc(backward: Bool) -> (Int) -> Int {
     func Backward(input: Int) -> Int { return input - 1 }
     return backward ? Backward : Forward
 }
-var currValue = -4
-let MoveNearerToZero = chooseStepFunc(backward: currValue > 0)
+var currentValue1 = -4
+let MoveNearerToZero = chooseStepFunc(backward: currentValue1 > 0)
 // moveNearerToZero now refers to the nested Forward() function
-while currValue != 0 {
-    print("\(currValue) ")
-    currValue = MoveNearerToZero(currValue)
+while currentValue1 != 0 {
+    print("\(currentValue1) ")
+    currentValue1 = MoveNearerToZero(currentValue1)
 }
 
 // Closures
