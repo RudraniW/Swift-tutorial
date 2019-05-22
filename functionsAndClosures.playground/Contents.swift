@@ -134,3 +134,13 @@ while currValue != 0 {
     currValue = MoveNearerToZero(currValue)
 }
 
+// Closures
+
+let numbers = [12,34,32,54,67,43]
+//var sortedNos = numbers.sorted( by: {(s1: Int, s2: Int) -> Bool in return s1 < s2} )
+var sortedNos = numbers.sorted(by: {s1, s2 in return s1 > s2}) //Inferring Type From Context: as numbers is array of Int, s1 and s2 type is inferred as Int
+print(sortedNos)
+var SortedNos = numbers.sorted(by: {s1, s2 in s1 < s2}) //Single-expression closures can implicitly return the result of their single expression by omitting the return keyword
+print(SortedNos)
+var sorted = numbers.sorted(by: {$0 < $1})//shorthand argument names, automatically provided by swift, written as $0,$1 and so on, while using these, in can be omitted
+print(sorted)
