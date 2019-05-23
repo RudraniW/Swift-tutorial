@@ -144,3 +144,32 @@ var SortedNos = numbers.sorted(by: {s1, s2 in s1 < s2}) //Single-expression clos
 print(SortedNos)
 var sorted = numbers.sorted(by: {$0 < $1})//shorthand argument names, automatically provided by swift, written as $0,$1 and so on, while using these, in can be omitted
 print(sorted)
+
+var sortNo = numbers.sorted(){$0 > $1}//trailing closure
+print(sortNo)
+
+let digitNames = [
+    0: "Zero", 1: "One", 2: "Two",   3: "Three", 4: "Four",
+    5: "Five", 6: "Six", 7: "Seven", 8: "Eight", 9: "Nine"
+]
+let Nos = [16, 58, 510]
+let strings = Nos.map {(number) -> String in
+    var number = number
+    var output = ""
+    repeat{
+        output = digitNames[number % 10]! + output
+        number /= 10
+    }while number > 0
+    return output
+}
+print(strings)
+//Capturing Values
+func makeIncrementer(forIncrement amount: Int) -> () -> Int {
+    var runningTotal = 0
+    func incrementer() -> Int {
+        runningTotal += amount
+        return runningTotal
+    }
+    return incrementer
+}
+//print(makeIncrementer(forIncrement: 4))
