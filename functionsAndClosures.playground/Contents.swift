@@ -172,4 +172,30 @@ func makeIncrementer(forIncrement amount: Int) -> () -> Int {
     }
     return incrementer
 }
-//print(makeIncrementer(forIncrement: 4))
+let incrementbyfour = makeIncrementer(forIncrement: 4)
+print(incrementbyfour(),incrementbyfour())
+let incrementBySeven = makeIncrementer(forIncrement: 7)
+print(incrementBySeven(),incrementbyfour())// creating incrementbyseven doesn't affect incrementbyfour
+//Escaping Closures :  when the closure is passed as an argument to the function, but is called after the function returns.
+var completionHandlers: [() -> Void] = []
+func someFunctionWithEscapingClosure(completionHandler: @escaping () -> Void) {
+    completionHandlers.append(completionHandler)
+}
+func someFunctionWithNonescapingClosure(closure: () -> Void) {
+    closure()
+}
+class SomeClass {
+    var x = 10
+    func doSomething() {
+        someFunctionWithEscapingClosure { self.x = 100 }
+        someFunctionWithNonescapingClosure { x = 200 }
+    }
+}
+
+let instance = SomeClass()
+instance.doSomething()
+print(instance.x)
+completionHandlers.first?()
+print(instance.x)
+
+
